@@ -5,7 +5,3 @@ The purpose of this project is to classify news articles by which topic they bel
 ### Data
 - The data set was downloaded from Kaggle at: https://www.kaggle.com/snapcrack/all-the-news?select=articles3.csv
 - Data files are tracked by git lfs
-
-
-### Future Concepts to Explore
-- BERT: Bi-directional Encoder Representations from Transformers, text-embedding while keeping contextual information, https://www.tensorflow.org/text/tutorials/classify_text_with_bert
