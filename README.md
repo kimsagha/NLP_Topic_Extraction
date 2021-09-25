@@ -17,3 +17,4 @@ The purpose of this project is to classify news articles by which topic they bel
 - LDA/LSA: how do you select the number of topics? Is there a more efficient way than trial-and-error?
 - How can I measure the performance of unsupervised models?
 - Are NER outputs topics?
+- Identify n-grams (or taken into account during tokenization?)?
