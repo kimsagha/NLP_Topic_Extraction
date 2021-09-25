@@ -7,7 +7,7 @@ The purpose of this project is to classify news articles by which topic they bel
 - Data files are tracked by git lfs
 
 #### Documentation
-- List all models their definitions
+- List all models and their definitions
 - Show pre and post processing versions for one selected article
 - List the topics resulting from each model for a selected 3 articles
 - Explain the reason for not using any supervised models: getting labelled data is infeasible, not relevant, not a challenge for me (similar to sentiment analysis but could’ve extended it with word embeddings instead of bag-of-words)
