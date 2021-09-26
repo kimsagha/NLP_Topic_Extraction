@@ -64,7 +64,7 @@ Reasons for not using any supervised models:
 - Found 517 topics in 50k news articles
 
 ### Topic Extraction Comparison Across All Models
-##### Articles:
+#### Articles:
 1. WASHINGTON — Congressional Republicans have... [washington, congressional, republicans, new]
 2. After the bullet shells get counted, the blood... [bullet, shell, count, blood, dry, votive, can]
 3. When Walt Disney’s “Bambi” opened in 1942, cri... [walt, disney, ’s, ", bambi, ", open, critic]
@@ -72,21 +72,21 @@ Reasons for not using any supervised models:
 5. SEOUL, South Korea — North Korea’s leader, ... [seoul, south, korea, north, korea, ’s, leader]
 6. LONDON — Queen Elizabeth II, who has been b... [london, queen, elizabeth, battling, cold, wee]
 
-##### Topics extracted per article from each model:
-NER:
-RAKE:
-LDA:
-BERTopic:
+#### Topics extracted per article from each model:
 ![plot](model_comparison.png)
+
+#### Conclusion
+- NER gives accurate representations of what is being spoken about but is limited to type of topic (i.e., entity label)
+- RAKE gives a good summary of the articles in the form of phrases. Regardless, they are too specific to pass for topics
+- LDA has repetitive words in multiple topics and a majority of the topics are dominated by terms like Trump and Clinton which appear in a lot of articles
+- BERTopic: Middleground between NER and LDA, not limited to entities but largely affected by majority terms and unable to identify many topics so they are combined into 'outliers' (i.e., topic -1)
+##### Future Extensions
+- Use pretrained models to classify all US political terms into 'US Politics', all terms related to food and fitness to 'Health', all terms related to art and celebrities into 'entertainment', etc.
+- Take n-grams into account in pre-processing
 
 ### Questions
 - What do you do when the word for the topic doesn’t exist in the text? For example topic extraction model finds 'USA, France, violence, military' but main topic is 'war'... (bring in another pre-trained model?)
 - LDA: how do you select the number of topics? Is there a more efficient way than by trial-and-error?
 - How can I measure the performance of unsupervised models? Other than coherence scores...
 - Do NER (and RAKE) outputs count as topics?
-- Are n-grams relevant in topic extraction? Are they taken into account during tokenization?
 - Are there any topic extraction models I haven't considered?
-
-#### TO DO
-- Go through code files
-- Write a conclusion with next steps
