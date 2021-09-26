@@ -77,6 +77,7 @@ NER:
 RAKE:
 LDA:
 BERTopic:
+![plot](model_comparison.png)
 
 ### Questions
 - What do you do when the word for the topic doesn’t exist in the text? For example topic extraction model finds 'USA, France, violence, military' but main topic is 'war'... (bring in another pre-trained model?)
@@ -87,6 +88,5 @@ BERTopic:
 - Are there any topic extraction models I haven't considered?
 
 #### TO DO
-- Get topics extracted for first 6 articles from BERTopic model
 - Go through code files
 - Write a conclusion with next steps
