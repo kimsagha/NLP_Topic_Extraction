@@ -1,6 +1,6 @@
 # NLP Project
 ## Topic extraction
-The purpose of this project is to classify news articles by which topic they belong to via topic extraction.
+The purpose of this project is to classify news articles by which topic they belong to via topic extraction. The use of 4 different models was explored for this purpose.
 
 ### Data
 - The data set was downloaded from Kaggle at: https://www.kaggle.com/snapcrack/all-the-news?select=articles3.csv
@@ -27,12 +27,12 @@ Reasons for not using any supervised models:
 #### NER
 - Name Entity Recognition
 - Aim:
-    - Extract different types of entities from a text to understand what or who the text was about
+    - Extract different types of entities from a text to understand what or who the text is about
 
 #### RAKE
 - Rapid Automatic Keyword Extraction
 - Aim:
-    - Remove stopwords and use phrase delimiters to locate content bearing tokens
+    - Remove stopwords and use phrase delimiters to locate content bearing phrases
 
 #### LDA
 - Latent Dirichlet Allocation
@@ -45,11 +45,13 @@ Reasons for not using any supervised models:
     - Filter out tokens that appear in less than 3 documents
     - Transform each article into a bag-of-words model
     - Add tf-idf weights to bow models
-- [Results]: coherence score per number of topics
-    - __________________ with 500 topics (number found by BERTopic model)
+- Results, i.e., coherence score per number of topics:
+    - 0.8083057157790445 with 500 topics (number found by BERTopic model --> empty topics)
+    - 0.5065700357269545 with 200 topics (many words reappeared in multiple topics --> reduced the number of topics)
+    - 0.3554205987715327 with 100 topics
     - 0.34805681617956025 with 50 topics
-    - 0.3538168453269389 with 20 topics (many words reappeared in multiple topics --> reduced the number of topics)
-    - 0.3570446379596891 with 10 topics
+    - 0.3538168453269389 with 20 topics
+    - 0.3570446379596891 with 10 topics [selected]
     - 0.3879960200020037 with 5 topics (maybe it's not enough topics...)
 
 #### BERTopic
@@ -77,14 +79,14 @@ LDA:
 BERTopic:
 
 ### Questions
-- What do you do when the word for the topic doesn’t exist in the text? For example topic extraction model finds 'USA, France, violence, police' but main topic is 'war'...
+- What do you do when the word for the topic doesn’t exist in the text? For example topic extraction model finds 'USA, France, violence, military' but main topic is 'war'... (bring in another pre-trained model?)
 - LDA: how do you select the number of topics? Is there a more efficient way than by trial-and-error?
 - How can I measure the performance of unsupervised models? Other than coherence scores...
-- Do NER outputs count as topics?
-- Identify n-grams (or taken into account during tokenization?)? [data_words_bigrams = make_bigrams(data_words_nostops)]
+- Do NER (and RAKE) outputs count as topics?
+- Are n-grams relevant in topic extraction? Are they taken into account during tokenization?
 - Are there any topic extraction models I haven't considered?
 
 #### TO DO
-- Check if the LDA model with 500 topics has a higher coherence score than the one with 10 topics, update results in readme and excel if needed
 - Get topics extracted for first 6 articles from BERTopic model
-- Write a conclusion
+- Go through code files
+- Write a conclusion with next steps
