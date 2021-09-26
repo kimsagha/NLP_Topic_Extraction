@@ -6,17 +6,17 @@ The purpose of this project is to classify news articles by which topic they bel
 - The data set was downloaded from Kaggle at: https://www.kaggle.com/snapcrack/all-the-news?select=articles3.csv
 - Data files are tracked by git lfs
 - The same preprocessing steps were taken for all topic extraction models
-  - Import data from CSV into structured and labelled dataframe format
-  - Use Spacy nlp pipeline to normalise the article texts
-      - lowercase
-      - strip tags
-      - strip punctuation
-      - strip multiple whitespaces
-      - strip numbers
-      - remove stopwords
-      - strip short words (less than 3 characters)
-      - Lemmatize
-      - --> Sample text: 'Hello, my name is something you'll never guess, Kim! ...But I wrote my signature. Right! My parents called me this, what can I say?' --> ['hello', 'guess', 'kim', 'write', 'signature', 'right', 'parent', 'call']
+    - Import data from CSV into structured and labelled dataframe format
+    - Use Spacy nlp pipeline to normalise the article texts
+        - lowercase
+        - strip tags
+        - strip punctuation
+        - strip multiple whitespaces
+        - strip numbers
+        - remove stopwords
+        - strip short words (less than 3 characters)
+        - Lemmatize
+        - --> Sample text: 'Hello, my name is something you'll never guess, Kim! ...But I wrote my signature. Right! My parents called me this, what can I say?' --> ['hello', 'guess', 'kim', 'write', 'signature', 'right', 'parent', 'call']
 
 ### Models
 Reasons for not using any supervised models:
@@ -26,30 +26,36 @@ Reasons for not using any supervised models:
 
 #### NER
 - Name Entity Recognition
-- Aim: extract different types of entities from a text to understand what or who the text was about
+- Aim:
+    - Extract different types of entities from a text to understand what or who the text was about
 
 #### RAKE
 - Rapid Automatic Keyword Extraction
-- Aim: remove stopwords and use phrase delimiters to locate content bearing tokens
+- Aim:
+    - Remove stopwords and use phrase delimiters to locate content bearing tokens
 
 #### LDA
-- Additional preprocessing:
-  - Create a dictionary from corpus of articles
-  - Filter out tokens that appear in less than 3 documents
-  - Transform each article into a bag-of-words model
-  - Add tf-idf weights to bow models
+- Latent Dirichlet Allocation
 - Aim:
-  - Cluster texts to discover latent topics
-  - Process words and assign them weights indicating their contribution to a topic
-  - 2 models: topic per document and words per topic
+    - Cluster texts to discover latent topics
+    - Process words and assign them weights indicating their contribution to a topic
+    - 2 models: topic per document and words per topic
+- Additional preprocessing:
+    - Create a dictionary from corpus of articles
+    - Filter out tokens that appear in less than 3 documents
+    - Transform each article into a bag-of-words model
+    - Add tf-idf weights to bow models
 - [Results]: coherence score per number of topics
-  - __________________ with 50 topics
-  - 0.3538168453269389 with 20 topics (many words reappeared in multiple topics --> reduced the number of topics)
-  - 0.3570446379596891 with 10 topics
-  - 0.3879960200020037 with 5 topics (maybe it's not enough topics...)
+    - __________________ with 500 topics (number found by BERTopic model)
+    - 0.34805681617956025 with 50 topics
+    - 0.3538168453269389 with 20 topics (many words reappeared in multiple topics --> reduced the number of topics)
+    - 0.3570446379596891 with 10 topics
+    - 0.3879960200020037 with 5 topics (maybe it's not enough topics...)
 
 #### BERTopic
-- BERT (Bidirectional Encoder Representations from Transformers) based topic modelling technique: vectorise documents, cluster vectors, find most common words in each cluster
+- BERT (Bidirectional Encoder Representations from Transformers) based topic modelling technique
+- Aim:
+    - Vectorise documents, cluster vectors, find most common words in each cluster
 - Pros:
     - No need to predetermine number of topics
     - Using pretrained BERT instead of bow contextualises embeddings
@@ -77,3 +83,8 @@ BERTopic:
 - Do NER outputs count as topics?
 - Identify n-grams (or taken into account during tokenization?)? [data_words_bigrams = make_bigrams(data_words_nostops)]
 - Are there any topic extraction models I haven't considered?
+
+#### TO DO
+- Check if the LDA model with 500 topics has a higher coherence score than the one with 10 topics, update results in readme and excel if needed
+- Get topics extracted for first 6 articles from BERTopic model
+- Write a conclusion
